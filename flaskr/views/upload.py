@@ -5,6 +5,8 @@ from wtforms import StringField, SubmitField, validators
 from flask_wtf.file import FileField
 from werkzeug import secure_filename
 import os
+from flaskr.models import Song
+from flaskr.models import sess
 
 
 upload = Blueprint('upload', __name__,
@@ -29,6 +31,10 @@ def _upload():
             error = 'Must be mp3'
         else:
             form.song.data.save('flaskr/static/music/' + filename)
+
+            song = Song(artist=form.artist.data, title=form.title.data, file=form.song.data.filename)
+            sess.add(song)
+            sess.commit()
     else:
         filename = None
         error = None

@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.table td, .table th {
+    padding: 12px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
+}
