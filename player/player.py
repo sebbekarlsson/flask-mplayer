@@ -23,7 +23,7 @@ class Player (threading.Thread):
                     print('SKIPPING {file}'.format(file=file))
 
     def play_list(self):
-        while True:
+        while len(self.songs) > 0:
             for song in self.songs:
 
                 if pygame.mixer.music.get_busy() == True:
@@ -35,5 +35,6 @@ class Player (threading.Thread):
                 self.songs.remove(song)
 
     def run(self):
-        self.collect_songs()
-        self.play_list()
+        while True:
+            self.collect_songs()
+            self.play_list()
