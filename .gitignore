@@ -1,0 +1,4 @@
+*.pyc
+music/*
+*egg*
+*cache*
