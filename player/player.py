@@ -15,8 +15,12 @@ class Player (threading.Thread):
         for subdir, dirs, files in os.walk(self.dir):
             for file in files:
                 full_name = self.dir + '/' + file
-                self.songs.append(full_name)
-                print(full_name)
+                fname, file_extension = os.path.splitext(full_name)
+
+                if 'mp3' in file_extension:
+                    self.songs.append(full_name)
+                else:
+                    print('SKIPPING {file}'.format(file=file))
 
     def play_list(self):
         while True:
