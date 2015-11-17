@@ -1,0 +1,18 @@
+{% from "_formhelpers.html" import render_field %}
+
+{% extends 'layout.html' %}
+{% block content %}
+
+<form method='post' enctype='multipart/form-data'>
+    {{ render_field(form.artist) }}
+    {{ render_field(form.title) }}
+    {{ render_field(form.song) }}
+    {{ render_field(form.submit) }}
+    <section>
+        {% if not error is none %}
+        <p>{{ error }}</p>
+        {% endif %}
+    </section>
+</form>
+
+{% endblock %}

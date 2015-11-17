@@ -12,6 +12,7 @@ setup(
     install_requires=[
         'flask',
         'flask-wtf',
+        'wtforms',
         'PyMySQL',
         'pygame',
         'mplayer.py',
