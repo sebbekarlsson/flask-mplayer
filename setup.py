@@ -14,6 +14,7 @@ setup(
         'flask-wtf',
         'PyMySQL',
         'pygame',
-        'mplayer.py'
+        'mplayer.py',
+        'sqlalchemy'
     ]
 )

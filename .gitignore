@@ -3,3 +3,4 @@ music/*
 *egg*
 *cache*
 *.mp3
+*sqlite*
