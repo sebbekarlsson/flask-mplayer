@@ -2,6 +2,7 @@ import threading
 import os
 import pygame
 import time
+from flaskr.models import Song, sess
 
 
 class Player (threading.Thread):
@@ -12,29 +13,36 @@ class Player (threading.Thread):
         pygame.mixer.init()
 
     def collect_songs(self):
-        for subdir, dirs, files in os.walk(self.dir):
-            for file in files:
-                full_name = self.dir + '/' + file
-                fname, file_extension = os.path.splitext(full_name)
-
-                if 'mp3' in file_extension:
-                    self.songs.append(full_name)
-                else:
-                    print('SKIPPING {file}'.format(file=file))
+        self.songs = db_songs = sess.query(Song).all()
 
     def play_list(self):
-        while len(self.songs) > 0:
-            for song in self.songs:
+        for song in self.songs:
 
-                if pygame.mixer.music.get_busy() == True:
-                    break
+            full_name = self.dir + '/' + song.file
+            fname, file_extension = os.path.splitext(full_name)
 
-                print('RIGHT NOW PLAYING: {song}'.format(song=song))
-                pygame.mixer.music.load(song)
-                pygame.mixer.music.play()
-                self.songs.remove(song)
+            print('RIGHT NOW PLAYING: {song}'.format(song=song.title))
+            pygame.mixer.music.load(full_name)
+            pygame.mixer.music.play()
+
+
+            while pygame.mixer.music.get_busy() or 'mp3' not in file_extension:
+                song.playing = 1
+                sess.commit()
+                sess.flush()
+
+                time.sleep(3)
+
+
+            song.playing = 0
+            sess.commit()
+            sess.flush()
+
+            self.songs.remove(song)
 
     def run(self):
         while True:
-            self.collect_songs()
-            self.play_list()
+            if len(self.songs) > 0:
+                self.play_list()
+            else:
+                self.collect_songs()

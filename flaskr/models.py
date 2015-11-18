@@ -20,6 +20,7 @@ class Song(Base, Data):
     artist = sa.Column(sa.String)
     title = sa.Column(sa.String)
     file = sa.Column(sa.String)
+    playing = sa.Column(sa.Integer)
 
 
 def initialize_database():

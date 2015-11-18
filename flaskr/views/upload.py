@@ -32,7 +32,7 @@ def _upload():
         else:
             form.song.data.save('flaskr/static/music/' + filename)
 
-            song = Song(artist=form.artist.data, title=form.title.data, file=form.song.data.filename)
+            song = Song(artist=form.artist.data, title=form.title.data, file=secure_filename(form.song.data.filename))
             sess.add(song)
             sess.commit()
     else:

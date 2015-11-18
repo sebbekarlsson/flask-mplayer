@@ -3,7 +3,6 @@ from jinja2 import TemplateNotFound
 import os
 from flaskr.models import Song
 from flaskr.models import sess
-from werkzeug import secure_filename
 
 
 action = Blueprint('action', __name__,
@@ -17,7 +16,7 @@ def _action(act):
         song = sess.query(Song).filter(Song.id==song_id).first()
 
 
-        os.remove(os.path.dirname(os.path.dirname(__file__)) + '/static/music/{file}'.format(file=secure_filename(song.file)))
+        os.remove(os.path.dirname(os.path.dirname(__file__)) + '/static/music/{file}'.format(file=song.file))
 
         sess.delete(song)
         sess.commit()

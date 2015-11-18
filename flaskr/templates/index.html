@@ -1,2 +1,8 @@
 {% extends 'layout.html' %}
-{% block content %}<h1>Index</h1>{% endblock %}
+{% block content %}
+    <p>
+        {% if song is not none %}
+            <p>Playing: {{song.artist}} - {{song.title}} </p>
+        {% endif %}
+    </p>
+{% endblock %}
