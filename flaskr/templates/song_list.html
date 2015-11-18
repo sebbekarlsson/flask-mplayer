@@ -3,7 +3,7 @@
         var http = new XMLHttpRequest();
         var url = "/action/delete";
         var params = "id=" + song_id;
-        http.open("POST", url, true);
+        http.open("POST", url, false);
 
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.setRequestHeasder("Content-length", params.length);
@@ -28,7 +28,7 @@
         </span>
     {% endif %}
 {% endif %}
-<table class='table'>
+<table class='table songs-table'>
     <tr>
         <th>ID</th>
         <th>Artist</th>

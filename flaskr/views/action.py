@@ -3,6 +3,8 @@ from jinja2 import TemplateNotFound
 import os
 from flaskr.models import Song
 from flaskr.models import sess
+from functions.songs import get_all_songs, get_playing_song
+import json
 
 
 action = Blueprint('action', __name__,
@@ -22,6 +24,3 @@ def _action(act):
         sess.commit()
 
         return 'ok'
-
-        James_Bay_-Scars-_(Acoustic).mp3
-        James_Bay_-Scars-_Acoustic.mp3
