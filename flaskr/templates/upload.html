@@ -3,11 +3,17 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<form method='post' enctype='multipart/form-data'>
-    {{ render_field(form.artist) }}
-    {{ render_field(form.title) }}
-    {{ render_field(form.song) }}
-    {{ render_field(form.submit) }}
+<form class='form' method='post' enctype='multipart/form-data'>
+    <section>
+        {{ render_field(form.artist) }}
+        {{ render_field(form.title) }}
+    </section>
+    <section>
+        {{ render_field(form.song) }}
+    </section>
+    <section>
+        {{ render_field(form.submit) }}
+    </section>
     <section>
         {% if not error is none %}
         <p>{{ error }}</p>

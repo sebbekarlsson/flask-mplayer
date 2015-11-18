@@ -1,0 +1,60 @@
+<script type='text/javascript'>
+    function delete_song(song_id){
+        var http = new XMLHttpRequest();
+        var url = "/action/delete";
+        var params = "id=" + song_id;
+        http.open("POST", url, true);
+
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.setRequestHeasder("Content-length", params.length);
+        http.setRequestHeader("Connection", "close");
+
+        http.onreadystatechange = function() {
+            if(http.readyState == 4 && http.status == 200) {
+                document.getElementById('song_'+song_id).style.display = 'none';
+            }else{
+                document.getElementById('song_'+song_id).style.backgroundColor = 'red';
+            }
+        }
+        http.send(params);
+    }
+</script>
+{% if current_song is not undefined %}
+    {% if current_song is not none %}
+        <span>
+            <section>
+                <p>Now playing: {{ current_song.artist }} - {{ current_song.title }}</p>
+            </section>
+        </span>
+    {% endif %}
+{% endif %}
+<table class='table'>
+    <tr>
+        <th>ID</th>
+        <th>Artist</th>
+        <th>Title</th>
+        {% if administrate is not none %}
+            {% if administrate == 1 %}
+            <th>Action</th>
+            {% endif %}
+        {% endif %}
+    </tr>
+    {% set shifted = 1 %}
+    {% for song in songs %}
+        {% if shifted == 0 %}
+        {% set shifted = 1 %}
+        {% else %}
+        {% set shifted = 0 %}
+        {% endif %}
+        <tr id='song_{{ song.id }}' {% if song.playing == 1 and shifted == 0 %} class='blue-bg' {% elif shifted == 1 %} class='shifted' {% endif %}>
+            <td>{{ song.id }}</td>
+            <td>{{ song.artist }}</td>
+            <td>{{ song.title }}</td>
+            {% if administrate is not none %}
+                {% if administrate == 1 %}
+                    <td><button onclick='return delete_song({{ song.id }});'>Delete</button></td>
+                {% endif %}
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>

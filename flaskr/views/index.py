@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
 from flaskr.models import sess, Song
+from functions.songs import get_all_songs, get_playing_song
 
 
 index = Blueprint('index', __name__,
@@ -8,5 +9,6 @@ index = Blueprint('index', __name__,
 
 @index.route('/')
 def _index():
-    song = sess.query(Song).filter(Song.playing==1).first()
-    return render_template('index.html', song=song)
+    songs = get_all_songs()
+    current_song = get_playing_song()
+    return render_template('index.html', songs=songs, current_song=current_song)

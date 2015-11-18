@@ -1,11 +1,55 @@
 * {
-    margin: 0;
-    padding: 0;
-}
+  margin: 0;
+  font-family: 'Raleway', sans-serif; }
 
-.table td, .table th {
-    padding: 12px;
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: black;
-}
+.nav-bar {
+  background-color: #3498db;
+  color: white;
+  height: 48px;
+  line-height: 48px; }
+  .nav-bar ul, .nav-bar li {
+    display: inline;
+    margin-right: 10px;
+    margin-left: 10px; }
+    .nav-bar ul .nav-btn, .nav-bar li .nav-btn {
+      color: white;
+      text-decoration: none; }
+      .nav-bar ul .nav-btn:hover, .nav-bar li .nav-btn:hover {
+        cursor: pointer; }
+
+#content {
+  margin-top: 12px; }
+
+.table th, .table td {
+  padding: 12px; }
+.table .shifted {
+  background-color: lightgray; }
+
+.blue-bg {
+  background-color: #3498db;
+  color: white; }
+
+.form input[type='text'] {
+  height: 32px;
+  background-color: transparent;
+  font-size: 100%;
+  outline: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray; }
+.form input[type='submit'] {
+  height: 32px;
+  outline: none;
+  border: none;
+  background-color: #3498db;
+  color: white; }
+  .form input[type='submit']:hover {
+    cursor: pointer; }
+.form section {
+  margin-bottom: 12px;
+  padding: 12px; }
+
+/*# sourceMappingURL=style.css.map */

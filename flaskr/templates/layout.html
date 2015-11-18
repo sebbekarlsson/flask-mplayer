@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="css/style.css") }}'>
         {% block head %}{% endblock %}
     </head>
 
     <body>
+        <nav class='nav-bar'>
+            <ul>
+                <li><a class='nav-btn' href='/'><span>Home</span></a></li>
+                <li><a class='nav-btn' href='/upload'><span>Upload</span></a></li>
+            </ul>
+        </nav>
         <div id='content'>
             {% block content %}{% endblock %}
         </div>

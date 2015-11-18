@@ -1,8 +1,4 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <p>
-        {% if song is not none %}
-            <p>Playing: {{song.artist}} - {{song.title}} </p>
-        {% endif %}
-    </p>
+    {% include 'song_list.html' %}
 {% endblock %}
