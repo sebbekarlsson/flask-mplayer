@@ -4,3 +4,5 @@ music/*
 *cache*
 *.mp3
 *sqlite*
+*.yml
+*.yaml

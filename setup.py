@@ -16,6 +16,7 @@ setup(
         'PyMySQL',
         'pygame',
         'mplayer.py',
-        'sqlalchemy'
+        'sqlalchemy',
+        'pyyaml'
     ]
 )
