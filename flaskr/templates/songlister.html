@@ -10,12 +10,19 @@
 </tr>
 {% set shifted = 1 %}
 {% for song in songs %}
+
     {% if shifted == 0 %}
-    {% set shifted = 1 %}
+        {% set shifted = 1 %}
     {% else %}
-    {% set shifted = 0 %}
+        {% set shifted = 0 %}
     {% endif %}
-    <tr id='song_{{ song.id }}' {% if song.playing == 1 %} class='blue-fg' {% elif shifted == 1 %} class='shifted' {% endif %}>
+
+    <tr id='song_{{ song.id }}' 
+    {% if shifted == 1 %}
+    class='shifted {% if song.playing == 1 %} blue-fg {% endif %} '
+    {% elif song.playing == 1 %}
+    class='blue-fg {% if shifted == 1 %} shifted {% endif %} '
+    {% endif %}>
         <td>{{ song.id }}</td>
         <td>{{ song.artist }}</td>
         <td>

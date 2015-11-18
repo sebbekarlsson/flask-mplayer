@@ -1,0 +1,46 @@
+<script type='text/javascript'>
+    function delete_song(song_id){
+        var http = new XMLHttpRequest();
+        var url = "/action/delete";
+        var params = "id=" + song_id;
+        http.open("POST", url, true);
+
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.setRequestHeader("Content-length", params.length);
+
+        http.onreadystatechange = function() {
+            if(http.readyState == 4 && http.status == 200) {
+                document.getElementById('song_'+song_id).style.display = 'none';
+            }else{
+                document.getElementById('song_'+song_id).style.backgroundColor = 'red';
+            }
+        }
+        http.send(params);
+    }
+
+    function update_songs(){
+        var http = new XMLHttpRequest();
+        var url = "/songlister";
+        http.open("GET", url, true);
+
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        http.onreadystatechange = function() {
+            if(http.readyState == 4 && http.status == 200) {
+                new_table = http.responseText;
+                song_tables = document.querySelectorAll('.songs-table');
+
+                for(var i = 0; i < song_tables.length; i++){
+                    table = song_tables[i];
+                    table.innerHTML = new_table;
+                }
+            }
+        }
+        http.send();
+    }
+
+    update_songs();
+    setInterval(function(){
+        update_songs();
+    }, 1000)
+</script>

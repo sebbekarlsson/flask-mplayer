@@ -1,4 +1,5 @@
 $blue: #3498db;
+$green: #2ecc71;
 
 
 * {
@@ -23,6 +24,10 @@ $blue: #3498db;
 
             &:hover {
                 cursor:pointer;
+                border-bottom-style: solid;
+                border-bottom-width: 4px;
+                border-bottom-color: white;
+                padding-bottom: 12px;
             }
         }
     }
@@ -42,6 +47,11 @@ $blue: #3498db;
             width: 16px;
             height: 16px;
         }
+    }
+
+    tr:hover {
+        background-color: $green;
+        color: white;
     }
 
     .shifted {

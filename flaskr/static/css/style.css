@@ -15,7 +15,11 @@
       color: white;
       text-decoration: none; }
       .nav-bar ul .nav-btn:hover, .nav-bar li .nav-btn:hover {
-        cursor: pointer; }
+        cursor: pointer;
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+        border-bottom-color: white;
+        padding-bottom: 12px; }
 
 #content {
   margin-top: 12px; }
@@ -27,6 +31,9 @@
     padding-left: 8px;
     width: 16px;
     height: 16px; }
+.table tr:hover {
+  background-color: #2ecc71;
+  color: white; }
 .table .shifted {
   background-color: lightgray; }
 
