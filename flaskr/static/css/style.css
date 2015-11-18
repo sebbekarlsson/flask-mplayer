@@ -24,18 +24,20 @@
 #content {
   margin-top: 12px; }
 
-.table th, .table td {
-  padding: 12px; }
-  .table th img, .table td img {
-    display: inline;
-    padding-left: 8px;
-    width: 16px;
-    height: 16px; }
-.table tr:hover {
-  background-color: #2ecc71;
-  color: white; }
-.table .shifted {
-  background-color: lightgray; }
+.table {
+  width: 100%; }
+  .table th, .table td {
+    padding: 12px; }
+    .table th img, .table td img {
+      display: inline;
+      padding-left: 8px;
+      width: 16px;
+      height: 16px; }
+  .table tr:hover {
+    background-color: #2ecc71;
+    color: white; }
+  .table .shifted {
+    background-color: lightgray; }
 
 .blue-bg {
   background-color: #3498db;
