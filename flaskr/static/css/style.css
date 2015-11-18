@@ -22,12 +22,20 @@
 
 .table th, .table td {
   padding: 12px; }
+  .table th img, .table td img {
+    display: inline;
+    padding-left: 8px;
+    width: 16px;
+    height: 16px; }
 .table .shifted {
   background-color: lightgray; }
 
 .blue-bg {
   background-color: #3498db;
   color: white; }
+
+.blue-fg {
+  color: #3498db; }
 
 .form input[type='text'] {
   height: 32px;

@@ -1,0 +1,33 @@
+<tr>
+    <th>ID</th>
+    <th>Artist</th>
+    <th>Title</th>
+    {% if administrate is not none %}
+        {% if administrate == 1 %}
+        <th>Action</th>
+        {% endif %}
+    {% endif %}
+</tr>
+{% set shifted = 1 %}
+{% for song in songs %}
+    {% if shifted == 0 %}
+    {% set shifted = 1 %}
+    {% else %}
+    {% set shifted = 0 %}
+    {% endif %}
+    <tr id='song_{{ song.id }}' {% if song.playing == 1 %} class='blue-fg' {% elif shifted == 1 %} class='shifted' {% endif %}>
+        <td>{{ song.id }}</td>
+        <td>{{ song.artist }}</td>
+        <td>
+        {{ song.title }}
+        {% if song.playing == 1 %}
+            <img src='{{ url_for("static", filename="images/notes.gif") }}'>
+        {% endif %}
+        </td>
+        {% if administrate is not none %}
+            {% if administrate == 1 %}
+                <td><button onclick='return delete_song({{ song.id }});'>Delete</button></td>
+            {% endif %}
+        {% endif %}
+    </tr>
+{% endfor %}

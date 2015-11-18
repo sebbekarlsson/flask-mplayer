@@ -3,6 +3,7 @@ import os
 import pygame
 import time
 from flaskr.models import Song, sess
+from functions.songs import get_all_songs
 
 
 class Player (threading.Thread):
@@ -13,7 +14,7 @@ class Player (threading.Thread):
         pygame.mixer.init()
 
     def collect_songs(self):
-        self.songs = db_songs = sess.query(Song).all()
+        self.songs = get_all_songs()
 
     def play_list(self):
         for song in self.songs:

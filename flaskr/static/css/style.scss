@@ -35,6 +35,13 @@ $blue: #3498db;
 .table {
     th, td {
         padding: 12px;
+
+        img {
+            display: inline;
+            padding-left: 8px;
+            width: 16px;
+            height: 16px;
+        }
     }
 
     .shifted {
@@ -46,6 +53,11 @@ $blue: #3498db;
     background-color: $blue;
     color: white;
 }
+
+.blue-fg {
+    color: $blue;
+}
+
 
 .form {
     input[type='text'] {
