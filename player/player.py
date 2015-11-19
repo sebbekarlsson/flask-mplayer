@@ -4,6 +4,7 @@ import pygame
 import time
 from flaskr.models import Song, sess
 from functions.songs import get_all_songs
+from random import shuffle
 
 
 class Player (threading.Thread):
@@ -15,6 +16,7 @@ class Player (threading.Thread):
 
     def collect_songs(self):
         self.songs = get_all_songs()
+        shuffle(self.songs)
 
     def play_list(self):
         for song in self.songs:
